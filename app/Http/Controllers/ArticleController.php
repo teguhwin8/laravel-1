@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Article;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ArticleController extends Controller
 {
@@ -33,6 +34,7 @@ class ArticleController extends Controller
 
 		Article::create([
 			'title' => $request['title'],
+			'slug' => Str::slug($request['title']),
 			'subject' => $request['subject']
 		]);
 
