@@ -11,7 +11,7 @@
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->subject }}</p>
                             <a href="/artikel/{{ $article->title }}" class="stretched-link"></a>
-                            
+
                         </div>
                     </div>
                 </div>
