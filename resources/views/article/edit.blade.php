@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Edit Artikel')
 @section('content')
     <h1>Edit Artikel Baru</h1>
     <form action="/artikel/{{ $article->id }}" method="POST">

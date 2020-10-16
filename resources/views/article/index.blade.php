@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'List Artikel')
 @section('content')
     <h1>List Artikel</h1>
     @foreach ($articles->chunk(3) as $articleChunk)
