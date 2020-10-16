@@ -21,4 +21,5 @@
     <div>
         {{ $articles->links() }}
     </div>
+    @include('layouts.footer')
 @endsection

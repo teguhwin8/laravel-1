@@ -9,6 +9,7 @@
         integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    <link rel="stylesheet" href="/assets/css/main.css">
 </head>
 
 <body>
