@@ -14,9 +14,9 @@ class ArticleController extends Controller
 		return view('article.index', compact('articles'));
 	}
 
-	public function show($title)
+	public function show($slug)
 	{
-		$article = Article::where('title', $title)->first();
+		$article = Article::where('slug', $slug)->first();
 		return view('article.show', compact('article'));
 	}
 
@@ -28,14 +28,20 @@ class ArticleController extends Controller
 	public function store(Request $request)
 	{
 		$request->validate([
+			'thumbnail' => 'image|max:1024',
 			'title' => 'required|min:3|max:255',
 			'subject' => 'required',
 		]);
 
+		$imgName = time() . '-' . $request->thumbnail->getClientOriginalName();
+
+		$request->thumbnail->move(public_path('image'), $imgName);
+
 		Article::create([
 			'title' => $request['title'],
 			'slug' => Str::slug($request['title']),
-			'subject' => $request['subject']
+			'subject' => $request['subject'],
+			'thumbnail' => $imgName
 		]);
 
 		return (redirect('/artikel'));

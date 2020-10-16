@@ -10,7 +10,7 @@
                         <div class="card-body">
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->subject }}</p>
-                            <a href="/artikel/{{ $article->title }}" class="stretched-link"></a>
+                            <a href="/artikel/{{ $article->slug }}" class="stretched-link"></a>
 
                         </div>
                     </div>
