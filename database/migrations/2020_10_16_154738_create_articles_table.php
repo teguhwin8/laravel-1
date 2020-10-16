@@ -19,6 +19,7 @@ class CreateArticlesTable extends Migration
             $table->string('title', 255);
             $table->text('subject');
             $table->timestamps();
+            $table->softDeletes('deleted_at', 0);
         });
     }
 
