@@ -18,5 +18,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/artikel', [ArticleController::class, 'index']);
-Route::get('/artikel/{slug}', [ArticleController::class, 'single']);
+Route::resource('artikel', ArticleController::class);
+

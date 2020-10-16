@@ -1,12 +1,24 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1>Ini adalah halaman artikel</h1>
-    @foreach ($articles as $article)
-        <p><strong>{{ $article['title'] }}</strong></p>
-        <p>{{ $article['content'] }}</p>
-		@endforeach
-		<div>
-			{{ $articles->links() }}
-		</div>
+    <h1>List Artikel</h1>
+    @foreach ($articles->chunk(3) as $articleChunk)
+        <div class="row">
+            @foreach ($articleChunk as $article)
+                <div class="col-md-4 px-3">
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h3>{{ $article->title }}</h3>
+                            <p>{{ $article->subject }}</p>
+                            <a href="/artikel/{{ $article->title }}" class="stretched-link"></a>
+                            
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    @endforeach
+    <div>
+        {{ $articles->links() }}
+    </div>
 @endsection
