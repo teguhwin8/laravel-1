@@ -33,9 +33,12 @@ class ArticleController extends Controller
 			'subject' => 'required',
 		]);
 
-		$imgName = time() . '-' . $request->thumbnail->getClientOriginalName();
+		$imgName = null;
 
-		$request->thumbnail->move(public_path('image'), $imgName);
+		if ($request->thumbnail) {
+			$imgName = time() . '-' . $request->thumbnail->getClientOriginalName();
+			$request->thumbnail->move(public_path('image'), $imgName);
+		}
 
 		Article::create([
 			'title' => $request['title'],
@@ -55,12 +58,29 @@ class ArticleController extends Controller
 
 	public function update(Request $request, $id)
 	{
-		Article::find($id)->update([
-			'title' => $request['title'],
-			'subject' => $request['subject']
+		$request->validate([
+			'thumbnail' => 'image|max:1024',
+			'title' => 'required|min:3|max:255',
+			'subject' => 'required',
 		]);
 
-		return (redirect('/artikel'));
+		$article = Article::find($id);
+
+		$imgName = $article->thumbnail;
+
+		if ($request->thumbnail) {
+			$imgName = time() . '-' . $request->thumbnail->getClientOriginalName();
+			$request->thumbnail->move(public_path('image'), $imgName);
+		}
+
+		Article::find($id)->update([
+			'thumbnail' => 'image|max:1024',
+			'title' => $request['title'],
+			'subject' => $request['subject'],
+			'thumbnail' => $imgName
+		]);
+
+		return (redirect('/artikel/' . $id . '/edit'));
 	}
 
 	public function destroy($id)

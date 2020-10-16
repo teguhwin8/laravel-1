@@ -7,11 +7,13 @@
             @foreach ($articleChunk as $article)
                 <div class="col-md-4 px-3">
                     <div class="card my-3">
+                        @if ($article->thumbnail)
+                            <img src="/image/{{ $article->thumbnail }}" class="card-img-top">
+                        @endif
                         <div class="card-body">
                             <h3>{{ $article->title }}</h3>
                             <p>{{ $article->subject }}</p>
                             <a href="/artikel/{{ $article->slug }}" class="stretched-link"></a>
-
                         </div>
                     </div>
                 </div>
