@@ -15,7 +15,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-12">
-                <nav>
+                <nav class="mb-5">
                     <a href="/artikel" class="btn btn-info">Artikel</a>
                     <a href="/artikel/create" class="btn btn-info">New +</a>
                 </nav>
